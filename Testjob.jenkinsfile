@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr.Jenkins', description: 'Who should i say hello to ?')
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+        booleanParam(name: 'TOGGLE', defaultValue: 'true', description: 'Toggle this value')
+        choice(name: 'CHOICE', choices: ['one', 'two', 'three'], description: 'Pick something')
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a Password')
+    }
+    stages {
+        stage('Example') {
+            steps {
+            echo "Hello ${params.PERSON}"
+            echo "Hello ${params.BIOGRAPHY}"
+            echo "Hello ${params.TOGGLE}"
+            echo "Hello ${params.CHOICE}"
+            echo "Hello ${params.PASSWORD}"
+            }
+        }
+    }
+}
